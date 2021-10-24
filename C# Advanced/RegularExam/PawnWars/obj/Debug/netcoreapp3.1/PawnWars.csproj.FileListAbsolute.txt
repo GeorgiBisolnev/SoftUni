@@ -1,0 +1,14 @@
+C:\Users\Georgi\source\repos\PawnWars\PawnWars\bin\Debug\netcoreapp3.1\PawnWars.exe
+C:\Users\Georgi\source\repos\PawnWars\PawnWars\bin\Debug\netcoreapp3.1\PawnWars.deps.json
+C:\Users\Georgi\source\repos\PawnWars\PawnWars\bin\Debug\netcoreapp3.1\PawnWars.runtimeconfig.json
+C:\Users\Georgi\source\repos\PawnWars\PawnWars\bin\Debug\netcoreapp3.1\PawnWars.runtimeconfig.dev.json
+C:\Users\Georgi\source\repos\PawnWars\PawnWars\bin\Debug\netcoreapp3.1\PawnWars.dll
+C:\Users\Georgi\source\repos\PawnWars\PawnWars\bin\Debug\netcoreapp3.1\PawnWars.pdb
+C:\Users\Georgi\source\repos\PawnWars\PawnWars\obj\Debug\netcoreapp3.1\PawnWars.csproj.AssemblyReference.cache
+C:\Users\Georgi\source\repos\PawnWars\PawnWars\obj\Debug\netcoreapp3.1\PawnWars.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Georgi\source\repos\PawnWars\PawnWars\obj\Debug\netcoreapp3.1\PawnWars.AssemblyInfoInputs.cache
+C:\Users\Georgi\source\repos\PawnWars\PawnWars\obj\Debug\netcoreapp3.1\PawnWars.AssemblyInfo.cs
+C:\Users\Georgi\source\repos\PawnWars\PawnWars\obj\Debug\netcoreapp3.1\PawnWars.csproj.CoreCompileInputs.cache
+C:\Users\Georgi\source\repos\PawnWars\PawnWars\obj\Debug\netcoreapp3.1\PawnWars.dll
+C:\Users\Georgi\source\repos\PawnWars\PawnWars\obj\Debug\netcoreapp3.1\PawnWars.pdb
+C:\Users\Georgi\source\repos\PawnWars\PawnWars\obj\Debug\netcoreapp3.1\PawnWars.genruntimeconfig.cache
