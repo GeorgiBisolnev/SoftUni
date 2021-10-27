@@ -1,0 +1,14 @@
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exercise Inheritance\Animals\bin\Debug\netcoreapp3.1\Animals.exe
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exercise Inheritance\Animals\bin\Debug\netcoreapp3.1\Animals.deps.json
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exercise Inheritance\Animals\bin\Debug\netcoreapp3.1\Animals.runtimeconfig.json
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exercise Inheritance\Animals\bin\Debug\netcoreapp3.1\Animals.runtimeconfig.dev.json
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exercise Inheritance\Animals\bin\Debug\netcoreapp3.1\Animals.dll
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exercise Inheritance\Animals\bin\Debug\netcoreapp3.1\Animals.pdb
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exercise Inheritance\Animals\obj\Debug\netcoreapp3.1\Animals.csproj.AssemblyReference.cache
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exercise Inheritance\Animals\obj\Debug\netcoreapp3.1\Animals.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exercise Inheritance\Animals\obj\Debug\netcoreapp3.1\Animals.AssemblyInfoInputs.cache
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exercise Inheritance\Animals\obj\Debug\netcoreapp3.1\Animals.AssemblyInfo.cs
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exercise Inheritance\Animals\obj\Debug\netcoreapp3.1\Animals.csproj.CoreCompileInputs.cache
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exercise Inheritance\Animals\obj\Debug\netcoreapp3.1\Animals.dll
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exercise Inheritance\Animals\obj\Debug\netcoreapp3.1\Animals.pdb
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exercise Inheritance\Animals\obj\Debug\netcoreapp3.1\Animals.genruntimeconfig.cache
