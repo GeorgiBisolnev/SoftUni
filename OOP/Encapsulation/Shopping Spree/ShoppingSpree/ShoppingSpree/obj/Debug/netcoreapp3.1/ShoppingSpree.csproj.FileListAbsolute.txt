@@ -1,0 +1,14 @@
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\Shopping Spree\ShoppingSpree\ShoppingSpree\bin\Debug\netcoreapp3.1\ShoppingSpree.exe
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\Shopping Spree\ShoppingSpree\ShoppingSpree\bin\Debug\netcoreapp3.1\ShoppingSpree.deps.json
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\Shopping Spree\ShoppingSpree\ShoppingSpree\bin\Debug\netcoreapp3.1\ShoppingSpree.runtimeconfig.json
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\Shopping Spree\ShoppingSpree\ShoppingSpree\bin\Debug\netcoreapp3.1\ShoppingSpree.runtimeconfig.dev.json
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\Shopping Spree\ShoppingSpree\ShoppingSpree\bin\Debug\netcoreapp3.1\ShoppingSpree.dll
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\Shopping Spree\ShoppingSpree\ShoppingSpree\bin\Debug\netcoreapp3.1\ShoppingSpree.pdb
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\Shopping Spree\ShoppingSpree\ShoppingSpree\obj\Debug\netcoreapp3.1\ShoppingSpree.csproj.AssemblyReference.cache
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\Shopping Spree\ShoppingSpree\ShoppingSpree\obj\Debug\netcoreapp3.1\ShoppingSpree.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\Shopping Spree\ShoppingSpree\ShoppingSpree\obj\Debug\netcoreapp3.1\ShoppingSpree.AssemblyInfoInputs.cache
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\Shopping Spree\ShoppingSpree\ShoppingSpree\obj\Debug\netcoreapp3.1\ShoppingSpree.AssemblyInfo.cs
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\Shopping Spree\ShoppingSpree\ShoppingSpree\obj\Debug\netcoreapp3.1\ShoppingSpree.csproj.CoreCompileInputs.cache
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\Shopping Spree\ShoppingSpree\ShoppingSpree\obj\Debug\netcoreapp3.1\ShoppingSpree.dll
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\Shopping Spree\ShoppingSpree\ShoppingSpree\obj\Debug\netcoreapp3.1\ShoppingSpree.pdb
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\Shopping Spree\ShoppingSpree\ShoppingSpree\obj\Debug\netcoreapp3.1\ShoppingSpree.genruntimeconfig.cache
