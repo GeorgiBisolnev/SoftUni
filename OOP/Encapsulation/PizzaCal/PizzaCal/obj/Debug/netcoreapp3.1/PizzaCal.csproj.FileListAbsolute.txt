@@ -1,0 +1,14 @@
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\PizzaCal\PizzaCal\bin\Debug\netcoreapp3.1\PizzaCal.exe
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\PizzaCal\PizzaCal\bin\Debug\netcoreapp3.1\PizzaCal.deps.json
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\PizzaCal\PizzaCal\bin\Debug\netcoreapp3.1\PizzaCal.runtimeconfig.json
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\PizzaCal\PizzaCal\bin\Debug\netcoreapp3.1\PizzaCal.runtimeconfig.dev.json
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\PizzaCal\PizzaCal\bin\Debug\netcoreapp3.1\PizzaCal.dll
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\PizzaCal\PizzaCal\bin\Debug\netcoreapp3.1\PizzaCal.pdb
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\PizzaCal\PizzaCal\obj\Debug\netcoreapp3.1\PizzaCal.csproj.AssemblyReference.cache
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\PizzaCal\PizzaCal\obj\Debug\netcoreapp3.1\PizzaCal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\PizzaCal\PizzaCal\obj\Debug\netcoreapp3.1\PizzaCal.AssemblyInfoInputs.cache
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\PizzaCal\PizzaCal\obj\Debug\netcoreapp3.1\PizzaCal.AssemblyInfo.cs
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\PizzaCal\PizzaCal\obj\Debug\netcoreapp3.1\PizzaCal.csproj.CoreCompileInputs.cache
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\PizzaCal\PizzaCal\obj\Debug\netcoreapp3.1\PizzaCal.dll
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\PizzaCal\PizzaCal\obj\Debug\netcoreapp3.1\PizzaCal.pdb
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Encapsulation\PizzaCal\PizzaCal\obj\Debug\netcoreapp3.1\PizzaCal.genruntimeconfig.cache
