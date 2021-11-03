@@ -21,7 +21,7 @@ namespace ShoppingSpree
 
         public string Name { get => name;
 
-            set {
+            private set {
                 if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentException("Name cannot be empty");
@@ -32,7 +32,7 @@ namespace ShoppingSpree
             }
         }
         public decimal Money { get => money; 
-            set
+            private set
             {
                 if (value<0)
                 {

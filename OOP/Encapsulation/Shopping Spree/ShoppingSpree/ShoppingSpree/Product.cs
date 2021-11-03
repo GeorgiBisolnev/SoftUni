@@ -11,13 +11,13 @@ namespace ShoppingSpree
 
         public Product(string name, decimal cost)
         {
-            this.name = name;
-            this.cost = cost;
+            this.Name = name;
+            this.Cost = cost;
         }
 
         public string Name { get => name; 
             
-        set  {
+        private set  {
                 if (string.IsNullOrEmpty(value))
                 {
                     throw new ArgumentException("Name cannot be empty");
@@ -29,7 +29,7 @@ namespace ShoppingSpree
              }
         }
         public decimal Cost { get => cost;
-            set 
+            private set 
             {
                 if (value<0)
                 {
