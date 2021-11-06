@@ -6,7 +6,7 @@ namespace BorderControl
     public class Program
     {
         static void Main(string[] args)
-        {
+        { 
             List<IId> ids = new List<IId>();
 
             string command;
