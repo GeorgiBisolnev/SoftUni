@@ -25,19 +25,15 @@ namespace BirthdayCelebrations
             }
 
             string command;
-
+            int totalFood = 0;
             while ((command = Console.ReadLine()) != "End")
             {
 
                 if (allFood.ContainsKey(command))
                 {
                     allFood[command].BuyFood();
+                    totalFood += allFood[command].Food;
                 }
-            }
-            int totalFood = 0;
-            foreach (var diner in allFood)
-            {
-                totalFood += diner.Value.Food;
             }
             Console.WriteLine(totalFood);
         }
