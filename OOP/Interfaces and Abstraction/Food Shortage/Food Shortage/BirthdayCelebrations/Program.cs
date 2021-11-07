@@ -11,15 +11,13 @@ namespace BirthdayCelebrations
             int n = int.Parse(Console.ReadLine());
             for (int i = 0; i < n; i++)
             {
-                string[] info = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                //<name> <age> <id> <birthdate>
+                string[] info = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries);                
                 if (info.Length==4)
                 {
                     allFood.Add(info[0], new Citizen(info[0], int.Parse(info[1]), info[2], info[3]));
                 }
                 else if (info.Length==3)
-                {
-                    //<name> <age><group>
+                {                    
                     allFood.Add(info[0], new Rebel(info[0], int.Parse(info[1]), info[2]));
                 }
             }
@@ -28,7 +26,6 @@ namespace BirthdayCelebrations
             int totalFood = 0;
             while ((command = Console.ReadLine()) != "End")
             {
-
                 if (allFood.ContainsKey(command))
                 {
                     allFood[command].BuyFood();
