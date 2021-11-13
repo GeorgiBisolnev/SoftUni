@@ -28,9 +28,6 @@ namespace WildFarm
         {
             return "ROAR!!!";
         }
-        public override string ToString()
-        {
-            return $"{GetType().Name} [{Name}, {Breed}, {Weight}, {LivingRegion}, {FoodEaten}]";
-        }
+
     }
 }
