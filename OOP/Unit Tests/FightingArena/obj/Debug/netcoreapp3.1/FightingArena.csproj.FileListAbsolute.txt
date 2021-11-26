@@ -1,0 +1,10 @@
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Unit Tests\FightingArena\bin\Debug\netcoreapp3.1\FightingArena.deps.json
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Unit Tests\FightingArena\bin\Debug\netcoreapp3.1\FightingArena.dll
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Unit Tests\FightingArena\bin\Debug\netcoreapp3.1\FightingArena.pdb
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Unit Tests\FightingArena\obj\Debug\netcoreapp3.1\FightingArena.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Unit Tests\FightingArena\obj\Debug\netcoreapp3.1\FightingArena.AssemblyInfoInputs.cache
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Unit Tests\FightingArena\obj\Debug\netcoreapp3.1\FightingArena.AssemblyInfo.cs
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Unit Tests\FightingArena\obj\Debug\netcoreapp3.1\FightingArena.csproj.CoreCompileInputs.cache
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Unit Tests\FightingArena\obj\Debug\netcoreapp3.1\FightingArena.dll
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Unit Tests\FightingArena\obj\Debug\netcoreapp3.1\FightingArena.pdb
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Unit Tests\FightingArena\obj\Debug\netcoreapp3.1\FightingArena.csproj.AssemblyReference.cache

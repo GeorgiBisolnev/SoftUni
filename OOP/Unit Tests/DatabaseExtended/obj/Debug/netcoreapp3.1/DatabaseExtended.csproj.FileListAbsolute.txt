@@ -1,0 +1,10 @@
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Unit Tests\DatabaseExtended\bin\Debug\netcoreapp3.1\DatabaseExtended.deps.json
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Unit Tests\DatabaseExtended\bin\Debug\netcoreapp3.1\DatabaseExtended.dll
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Unit Tests\DatabaseExtended\bin\Debug\netcoreapp3.1\DatabaseExtended.pdb
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Unit Tests\DatabaseExtended\obj\Debug\netcoreapp3.1\DatabaseExtended.csproj.AssemblyReference.cache
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Unit Tests\DatabaseExtended\obj\Debug\netcoreapp3.1\DatabaseExtended.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Unit Tests\DatabaseExtended\obj\Debug\netcoreapp3.1\DatabaseExtended.AssemblyInfoInputs.cache
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Unit Tests\DatabaseExtended\obj\Debug\netcoreapp3.1\DatabaseExtended.AssemblyInfo.cs
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Unit Tests\DatabaseExtended\obj\Debug\netcoreapp3.1\DatabaseExtended.csproj.CoreCompileInputs.cache
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Unit Tests\DatabaseExtended\obj\Debug\netcoreapp3.1\DatabaseExtended.dll
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Unit Tests\DatabaseExtended\obj\Debug\netcoreapp3.1\DatabaseExtended.pdb
