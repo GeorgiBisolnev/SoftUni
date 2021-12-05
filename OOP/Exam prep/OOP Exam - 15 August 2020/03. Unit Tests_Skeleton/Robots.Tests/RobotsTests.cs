@@ -91,6 +91,7 @@
         public void RobotManagerCharge()
         {
             robot.Battery = 0;
+
             robManager.Charge("Robi");
             Assert.AreEqual(100, robot.Battery);
         }
