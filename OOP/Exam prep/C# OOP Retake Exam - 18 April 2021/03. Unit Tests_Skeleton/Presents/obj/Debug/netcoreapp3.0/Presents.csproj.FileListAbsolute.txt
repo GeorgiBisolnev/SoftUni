@@ -1,0 +1,14 @@
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Retake Exam - 18 April 2021\03. Unit Tests_Skeleton\Presents\bin\Debug\netcoreapp3.0\Presents.exe
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Retake Exam - 18 April 2021\03. Unit Tests_Skeleton\Presents\bin\Debug\netcoreapp3.0\Presents.deps.json
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Retake Exam - 18 April 2021\03. Unit Tests_Skeleton\Presents\bin\Debug\netcoreapp3.0\Presents.runtimeconfig.json
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Retake Exam - 18 April 2021\03. Unit Tests_Skeleton\Presents\bin\Debug\netcoreapp3.0\Presents.runtimeconfig.dev.json
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Retake Exam - 18 April 2021\03. Unit Tests_Skeleton\Presents\bin\Debug\netcoreapp3.0\Presents.dll
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Retake Exam - 18 April 2021\03. Unit Tests_Skeleton\Presents\bin\Debug\netcoreapp3.0\Presents.pdb
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Retake Exam - 18 April 2021\03. Unit Tests_Skeleton\Presents\obj\Debug\netcoreapp3.0\Presents.csproj.AssemblyReference.cache
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Retake Exam - 18 April 2021\03. Unit Tests_Skeleton\Presents\obj\Debug\netcoreapp3.0\Presents.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Retake Exam - 18 April 2021\03. Unit Tests_Skeleton\Presents\obj\Debug\netcoreapp3.0\Presents.AssemblyInfoInputs.cache
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Retake Exam - 18 April 2021\03. Unit Tests_Skeleton\Presents\obj\Debug\netcoreapp3.0\Presents.AssemblyInfo.cs
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Retake Exam - 18 April 2021\03. Unit Tests_Skeleton\Presents\obj\Debug\netcoreapp3.0\Presents.csproj.CoreCompileInputs.cache
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Retake Exam - 18 April 2021\03. Unit Tests_Skeleton\Presents\obj\Debug\netcoreapp3.0\Presents.dll
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Retake Exam - 18 April 2021\03. Unit Tests_Skeleton\Presents\obj\Debug\netcoreapp3.0\Presents.pdb
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Retake Exam - 18 April 2021\03. Unit Tests_Skeleton\Presents\obj\Debug\netcoreapp3.0\Presents.genruntimeconfig.cache
