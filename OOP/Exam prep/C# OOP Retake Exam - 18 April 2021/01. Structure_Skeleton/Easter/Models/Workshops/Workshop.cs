@@ -17,28 +17,25 @@ namespace Easter.Models.Workshops
         public void Color(IEgg egg, IBunny bunny)
         {
             bool hasDye = bunny.Dyes.Any(x => x.IsFinished() != true);
-            if (bunny.Energy>0 && hasDye)
+
+            while (!egg.IsDone() && hasDye && bunny.Energy>0)
             {
-                while (!egg.IsDone())
+
+                egg.GetColored();
+                bunny.Work();
+
+                foreach (var dye in bunny.Dyes)
                 {
-                    hasDye = bunny.Dyes.Any(x => x.IsFinished() != true);
-                    if (!hasDye)
+                    if (!dye.IsFinished())
                     {
+                        dye.Use();
                         break;
                     }
-
-                    egg.GetColored();
-                    bunny.Work();
-
-                    foreach (var dye in bunny.Dyes)
-                    {
-                        if (!dye.IsFinished())
-                        {
-                            dye.Use();
-                        }
-                    }
                 }
+
+                hasDye = bunny.Dyes.Any(x => x.IsFinished() != true);
             }
+            //bunny.Dyes.ToList().RemoveAll(d => d.Power == 0);
         }
     }
 }
