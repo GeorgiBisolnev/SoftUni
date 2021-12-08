@@ -1,0 +1,14 @@
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Exam - 10 April 2021\03. Unit Tests_Skeleton\Aquariums\bin\Debug\netcoreapp3.0\Aquariums.exe
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Exam - 10 April 2021\03. Unit Tests_Skeleton\Aquariums\bin\Debug\netcoreapp3.0\Aquariums.deps.json
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Exam - 10 April 2021\03. Unit Tests_Skeleton\Aquariums\bin\Debug\netcoreapp3.0\Aquariums.runtimeconfig.json
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Exam - 10 April 2021\03. Unit Tests_Skeleton\Aquariums\bin\Debug\netcoreapp3.0\Aquariums.runtimeconfig.dev.json
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Exam - 10 April 2021\03. Unit Tests_Skeleton\Aquariums\bin\Debug\netcoreapp3.0\Aquariums.dll
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Exam - 10 April 2021\03. Unit Tests_Skeleton\Aquariums\bin\Debug\netcoreapp3.0\Aquariums.pdb
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Exam - 10 April 2021\03. Unit Tests_Skeleton\Aquariums\obj\Debug\netcoreapp3.0\Aquariums.csproj.AssemblyReference.cache
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Exam - 10 April 2021\03. Unit Tests_Skeleton\Aquariums\obj\Debug\netcoreapp3.0\Aquariums.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Exam - 10 April 2021\03. Unit Tests_Skeleton\Aquariums\obj\Debug\netcoreapp3.0\Aquariums.AssemblyInfoInputs.cache
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Exam - 10 April 2021\03. Unit Tests_Skeleton\Aquariums\obj\Debug\netcoreapp3.0\Aquariums.AssemblyInfo.cs
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Exam - 10 April 2021\03. Unit Tests_Skeleton\Aquariums\obj\Debug\netcoreapp3.0\Aquariums.csproj.CoreCompileInputs.cache
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Exam - 10 April 2021\03. Unit Tests_Skeleton\Aquariums\obj\Debug\netcoreapp3.0\Aquariums.dll
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Exam - 10 April 2021\03. Unit Tests_Skeleton\Aquariums\obj\Debug\netcoreapp3.0\Aquariums.pdb
+C:\Users\Georgi\Documents\GitHub\SofUni\OOP\Exam prep\C# OOP Exam - 10 April 2021\03. Unit Tests_Skeleton\Aquariums\obj\Debug\netcoreapp3.0\Aquariums.genruntimeconfig.cache
