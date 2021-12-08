@@ -76,7 +76,9 @@ namespace AquaShop.Models.Aquariums
             str.AppendLine($"{this.Name} ({this.GetType().Name}):");
             if (Fish.Count==0)
             {
-                str.AppendLine("none");
+                str.AppendLine("Fish: none");
+                str.AppendLine($"Decorations: {Decorations.Count}");
+                str.AppendLine($"Comfort: {this.Comfort}");
             }
             else
             {
