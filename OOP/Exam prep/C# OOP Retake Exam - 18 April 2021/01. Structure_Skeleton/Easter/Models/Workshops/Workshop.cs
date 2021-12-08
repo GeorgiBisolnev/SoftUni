@@ -35,7 +35,6 @@ namespace Easter.Models.Workshops
 
                 hasDye = bunny.Dyes.Any(x => x.IsFinished() != true);
             }
-            //bunny.Dyes.ToList().RemoveAll(d => d.Power == 0);
         }
     }
 }
