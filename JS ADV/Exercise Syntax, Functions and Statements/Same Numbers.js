@@ -9,6 +9,6 @@ function solve(num){
 
     console.log(bol);
     console.log(sum);
-};
+}
 
 solve(8888);
