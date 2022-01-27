@@ -8,3 +8,4 @@ function solve(arr) {
 }
 
 solve(["John", "Bob", "Christina", "Ema"])
+
