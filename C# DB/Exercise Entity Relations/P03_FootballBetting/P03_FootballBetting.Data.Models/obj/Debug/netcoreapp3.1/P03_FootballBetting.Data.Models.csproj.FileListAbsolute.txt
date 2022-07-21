@@ -1,0 +1,10 @@
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data.Models\bin\Debug\netcoreapp3.1\P03_FootballBetting.Data.Models.deps.json
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data.Models\bin\Debug\netcoreapp3.1\P03_FootballBetting.Data.Models.dll
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data.Models\bin\Debug\netcoreapp3.1\P03_FootballBetting.Data.Models.pdb
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data.Models\obj\Debug\netcoreapp3.1\P03_FootballBetting.Data.Models.csproj.AssemblyReference.cache
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data.Models\obj\Debug\netcoreapp3.1\P03_FootballBetting.Data.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data.Models\obj\Debug\netcoreapp3.1\P03_FootballBetting.Data.Models.AssemblyInfoInputs.cache
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data.Models\obj\Debug\netcoreapp3.1\P03_FootballBetting.Data.Models.AssemblyInfo.cs
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data.Models\obj\Debug\netcoreapp3.1\P03_FootballBetting.Data.Models.csproj.CoreCompileInputs.cache
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data.Models\obj\Debug\netcoreapp3.1\P03_FootballBetting.Data.Models.dll
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data.Models\obj\Debug\netcoreapp3.1\P03_FootballBetting.Data.Models.pdb

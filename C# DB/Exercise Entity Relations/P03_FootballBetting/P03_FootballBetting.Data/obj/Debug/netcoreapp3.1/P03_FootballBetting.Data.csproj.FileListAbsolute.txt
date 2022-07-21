@@ -1,0 +1,16 @@
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data\bin\Debug\netcoreapp3.1\P03_FootballBetting.Data.deps.json
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data\bin\Debug\netcoreapp3.1\P03_FootballBetting.Data.runtimeconfig.json
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data\bin\Debug\netcoreapp3.1\P03_FootballBetting.Data.runtimeconfig.dev.json
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data\bin\Debug\netcoreapp3.1\P03_FootballBetting.Data.dll
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data\bin\Debug\netcoreapp3.1\P03_FootballBetting.Data.pdb
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data\bin\Debug\netcoreapp3.1\P03_FootballBetting.Data.Models.dll
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data\bin\Debug\netcoreapp3.1\P03_FootballBetting.Data.Models.pdb
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data\obj\Debug\netcoreapp3.1\P03_FootballBetting.Data.csproj.AssemblyReference.cache
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data\obj\Debug\netcoreapp3.1\P03_FootballBetting.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data\obj\Debug\netcoreapp3.1\P03_FootballBetting.Data.AssemblyInfoInputs.cache
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data\obj\Debug\netcoreapp3.1\P03_FootballBetting.Data.AssemblyInfo.cs
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data\obj\Debug\netcoreapp3.1\P03_FootballBetting.Data.csproj.CoreCompileInputs.cache
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data\obj\Debug\netcoreapp3.1\P03_FootballBetting.Data.csproj.CopyComplete
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data\obj\Debug\netcoreapp3.1\P03_FootballBetting.Data.dll
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data\obj\Debug\netcoreapp3.1\P03_FootballBetting.Data.pdb
+C:\Users\Georgi\source\P03_FootballBetting\P03_FootballBetting.Data\obj\Debug\netcoreapp3.1\P03_FootballBetting.Data.genruntimeconfig.cache
