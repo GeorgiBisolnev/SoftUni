@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using System.Text;
 using AutoMapper;
 using Newtonsoft.Json;
 using ProductShop.Data;
+using ProductShop.DTOs.Products;
 using ProductShop.DTOs.Users;
 using ProductShop.Models;
 
@@ -13,24 +15,37 @@ namespace ProductShop
 {
     public class StartUp
     {
-        private static IMapper mapper;
+
         public static void Main(string[] args)
         {
-            mapper = new Mapper(new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<ProductShopProfile>();
-            }));
+            Mapper.Initialize(cfg => cfg.AddProfile(typeof(ProductShopProfile)));
 
             ProductShopContext context = new ProductShopContext();
 
             //context.Database.EnsureDeleted();
             //context.Database.EnsureCreated();
-
+            //
             //Console.WriteLine("Let's go ...");
-            string jsonInput = File.ReadAllText("../../../Datasets/users.json");
 
-            Console.WriteLine(ImportUsers(context, jsonInput));
+            // Problem 001
+            //string jsonInput1 = File.ReadAllText("../../../Datasets/users.json");
+            //Console.WriteLine(ImportUsers(context, jsonInput1));
+            //Problem 002
+            //string jsonInput2 = File.ReadAllText("../../../Datasets/products.json");
+            //Console.WriteLine(ImportProducts(context, jsonInput2));
+
         }
+
+        private static bool IsValid(object obj)
+        {
+            var validationContext = new System.ComponentModel.DataAnnotations.ValidationContext(obj);
+            var validationResult = new List<ValidationResult>();
+
+            bool isValid = Validator.TryValidateObject(obj, validationContext, validationResult, true);
+            return isValid;
+        }
+
+        //Problem 001
         public static string ImportUsers(ProductShopContext context, string inputJson)
         {
             var str = new StringBuilder();
@@ -42,7 +57,7 @@ namespace ProductShop
 
             foreach (ImportUserDto uDto in userDTO)
             {
-                User user = mapper.Map<User>(uDto);
+                User user = Mapper.Map<User>(uDto);
 
                 users.Add(user);
             }
@@ -51,6 +66,32 @@ namespace ProductShop
             context.SaveChanges();
             return $"Successfully imported {users.Count}";
         }
+
+        // Problem 002
+        public static string ImportProducts(ProductShopContext context, string inputJson)
+        {
+            ImportProductDto[] productDTOs = JsonConvert
+                .DeserializeObject<ImportProductDto[]>(inputJson);
+
+            ICollection<Product> products = new List<Product>();
+
+            foreach (var pro in productDTOs)
+            {
+                if (!IsValid(pro))
+                {
+                    continue;
+                }
+                Product product = Mapper.Map<Product>(pro);
+
+                products.Add(product);
+            }
+
+            context.AddRange(products);
+            context.SaveChanges();
+
+            return $"Successfully imported {products.Count}";
+        }
+
     }
     
 }
