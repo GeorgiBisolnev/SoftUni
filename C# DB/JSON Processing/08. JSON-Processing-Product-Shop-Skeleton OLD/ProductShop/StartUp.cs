@@ -5,8 +5,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Newtonsoft.Json;
 using ProductShop.Data;
+using ProductShop.DTOs.CategoriesProducts;
+using ProductShop.DTOs.Categoryes;
 using ProductShop.DTOs.Products;
 using ProductShop.DTOs.Users;
 using ProductShop.Models;
@@ -24,15 +27,23 @@ namespace ProductShop
 
             //context.Database.EnsureDeleted();
             //context.Database.EnsureCreated();
-            //
+
             //Console.WriteLine("Let's go ...");
 
-            // Problem 001
+            ////Problem 001
             //string jsonInput1 = File.ReadAllText("../../../Datasets/users.json");
             //Console.WriteLine(ImportUsers(context, jsonInput1));
-            //Problem 002
+            ////Problem 002
             //string jsonInput2 = File.ReadAllText("../../../Datasets/products.json");
             //Console.WriteLine(ImportProducts(context, jsonInput2));
+            ////Problem 003
+            //string jsonInput3 = File.ReadAllText("../../../Datasets/categories.json");
+            //Console.WriteLine(ImportCategories(context, jsonInput3));
+            ////Problem 004
+            //string jsonInput4 = File.ReadAllText("../../../Datasets/categories-products.json");
+            //Console.WriteLine(ImportCategoryProducts(context,jsonInput4));
+
+            Console.WriteLine(GetProductsInRange(context));
 
         }
 
@@ -90,6 +101,67 @@ namespace ProductShop
             context.SaveChanges();
 
             return $"Successfully imported {products.Count}";
+        }
+
+        //problem 003
+        public static string ImportCategories(ProductShopContext context, string inputJson)
+        {
+            ImportCategoryDto[] categoryesDto = JsonConvert
+                .DeserializeObject<ImportCategoryDto[]>(inputJson);
+
+            ICollection<Category> categoryes = new List<Category>();
+
+            foreach (ImportCategoryDto dto in categoryesDto)
+            {
+                if (!IsValid(dto))
+                {
+                    continue;
+                }
+
+                Category category = Mapper.Map<Category>(dto);
+                categoryes.Add(category);
+            }
+
+            context.Categories.AddRange(categoryes);
+            context.SaveChanges();
+
+            return $"Successfully imported {categoryes.Count}";
+        }
+
+        //Problem 004
+        public static string ImportCategoryProducts(ProductShopContext context, string inputJson)
+        {
+            ImportCategoryProductDto[] dtos = JsonConvert
+                .DeserializeObject<ImportCategoryProductDto[]>(inputJson);
+
+            ICollection<CategoryProduct> validCategoryesProducts = new List<CategoryProduct>();
+
+            foreach (ImportCategoryProductDto dto in dtos)
+            {
+                if (!IsValid(dto))
+                {
+                    continue;
+                }
+                CategoryProduct categoryProductToAdd = Mapper.Map<CategoryProduct>(dto);
+                validCategoryesProducts.Add(categoryProductToAdd);
+            }
+
+            context.CategoryProducts.AddRange(validCategoryesProducts);
+            context.SaveChanges();
+            return $"Successfully imported {validCategoryesProducts.Count}";
+        }
+
+        public static string GetProductsInRange(ProductShopContext context)
+        {
+            ExportProductsDto[] products = context
+                .Products
+                .Where(p => p.Price >= 500 && p.Price <= 1000)
+                .OrderBy(p => p.Price)
+                .ProjectTo<ExportProductsDto>()
+                .ToArray();  
+            
+            return JsonConvert.SerializeObject(products);
+
         }
 
     }
