@@ -6,7 +6,9 @@ using System.Linq;
 using System.Text;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using ProductShop.Data;
 using ProductShop.DTOs.CategoriesProducts;
 using ProductShop.DTOs.Categoryes;
@@ -41,9 +43,9 @@ namespace ProductShop
             //Console.WriteLine(ImportCategories(context, jsonInput3));
             ////Problem 004
             //string jsonInput4 = File.ReadAllText("../../../Datasets/categories-products.json");
-            //Console.WriteLine(ImportCategoryProducts(context,jsonInput4));
+            //Console.WriteLine(ImportCategoryProducts(context, jsonInput4));
 
-            Console.WriteLine(GetProductsInRange(context));
+            Console.WriteLine(GetUsersWithProducts(context));
 
         }
 
@@ -164,6 +166,102 @@ namespace ProductShop
 
         }
 
+        public static string GetSoldProducts(ProductShopContext context)
+        {
+            var soldProducts = context
+                .Users
+                .Where(u => u.ProductsSold.Any(s => s.BuyerId.HasValue))
+                .OrderBy(u => u.LastName)
+                .ThenBy(u => u.FirstName)
+                //.ProjectTo<ExportUsersWithSoldProductsDto>()
+                .Select(u => new
+                {
+                    firstName = u.FirstName,
+                    lastName = u.LastName,
+                    soldProducts = u.ProductsSold.Where(p => p.BuyerId.HasValue).Select(p => new
+                    {
+                        name = p.Name,
+                        price = p.Price,
+                        buyerFirstName = p.Buyer.FirstName,
+                        buyerLastName = p.Buyer.LastName
+                    })
+                })
+                .ToArray();
+
+            return JsonConvert.SerializeObject(soldProducts, Formatting.Indented);
+        }
+
+        public static string GetCategoriesByProductsCount(ProductShopContext context)
+        {
+            var categoryesByPC = context
+                .Categories
+                .OrderByDescending(c => c.CategoryProducts.Count())
+                .Select(c => new
+                {
+                    category = c.Name,
+                    productsCount = c.CategoryProducts.Count,
+                    averagePrice = $"{c.CategoryProducts.Average(p => p.Product.Price):F2}",
+                    totalRevenue = $"{c.CategoryProducts.Sum(p => p.Product.Price):F2}"
+                })
+                .ToArray()
+                .OrderByDescending(c=>c.productsCount);
+
+            return JsonConvert  .SerializeObject(categoryesByPC, Formatting.Indented);
+        }
+
+        public static string GetUsersWithProducts(ProductShopContext context)
+        {
+            var users = context
+                .Users
+                .Include(x => x.ProductsSold)
+                .ToList()
+                .Where(u => u.ProductsSold.Any(p => p.BuyerId.HasValue))
+                .Select(u => new
+                {
+                    firstName = u.FirstName,
+                    lastName = u.LastName,
+                    age = u.Age,
+                    soldProducts = new
+                    {
+                        count = u.ProductsSold.Where(p => p.BuyerId.HasValue).Count(),
+                        products = u.ProductsSold.Where(p => p.BuyerId.HasValue).Select(p => new
+                        {
+                            name = p.Name,
+                            price = p.Price
+                        })
+                        .ToList()
+
+                    }
+
+                })
+                .OrderByDescending(u => u.soldProducts.count)
+                .ToArray();               
+                
+
+            var result = new
+            {
+                usersCount = users.Count(),
+                users = users
+            };
+
+            return JsonConvert.SerializeObject(result,Formatting.Indented, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore
+            }));
+        }
+
+        private static JsonSerializerSettings GetJsonSettings()
+        {
+            return new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented,
+                ContractResolver = new DefaultContractResolver()
+                {
+                    NamingStrategy = new CamelCaseNamingStrategy()
+                },
+                NullValueHandling = NullValueHandling.Ignore
+            };
+        }
     }
     
 }
