@@ -244,10 +244,7 @@ namespace ProductShop
                 users = users
             };
 
-            return JsonConvert.SerializeObject(result,Formatting.Indented, new JsonSerializerSettings
-            {
-                NullValueHandling = NullValueHandling.Ignore
-            }));
+            return JsonConvert.SerializeObject(result, GetJsonSettings());
         }
 
         private static JsonSerializerSettings GetJsonSettings()
