@@ -1,6 +1,8 @@
 ﻿using CarDealer.Data;
 using CarDealer.DTO.Import;
 using CarDealer.Models;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
@@ -23,8 +25,20 @@ namespace CarDealer
 
             //System.Console.WriteLine(ImportSuppliers(context, xmlFile));
 
-            string xmlFile2 = File.ReadAllText("../../../Datasets/parts.xml");
-            System.Console.WriteLine(ImportParts(context,xmlFile2));
+            //string xmlFile2 = File.ReadAllText("../../../Datasets/parts.xml");
+            //System.Console.WriteLine(ImportParts(context, xmlFile2));
+
+            //string xmlFile3 = File.ReadAllText("../../../Datasets/cars.xml");
+            //System.Console.WriteLine(ImportCars(context, xmlFile3));
+
+            //string xmlFile4 = File.ReadAllText("../../../Datasets/customers.xml");
+            //System.Console.WriteLine(ImportCustomers(context, xmlFile4));
+
+            string xmlFile5 = File.ReadAllText("../../../Datasets/sales.xml");
+            System.Console.WriteLine(ImportSales(context, xmlFile5));
+
+
+
 
         }
         public static string ImportSuppliers(CarDealerContext context, string inputXml)
@@ -80,6 +94,110 @@ namespace CarDealer
             context.SaveChanges();
 
             return $"Successfully imported {parts.Count()}";
+        }
+
+        public static string ImportCars(CarDealerContext context, string inputXml)
+        {
+            XmlRootAttribute xmlRoot = new XmlRootAttribute("Cars");
+
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ImportCarDto[]),xmlRoot);
+
+            StringReader reader = new StringReader(inputXml);
+            ImportCarDto[] carsDto = (ImportCarDto[])xmlSerializer.Deserialize(reader);
+
+            ICollection<Car> cars = new List<Car>();
+
+            foreach (var cDto in carsDto)
+            {
+                Car car = new Car()
+                {
+                    Make = cDto.Make,
+                    Model = cDto.Model, 
+                    TravelledDistance = cDto.TravelledDistance
+                };
+
+                ICollection<PartCar> partsCarToImport = new List<PartCar>();
+
+                foreach (int part in cDto.Parts.Select(p=>p.Id).Distinct())
+                {
+                    if (context.Parts.Any(id=>id.Id == part))
+                    {
+                        PartCar newPartCar = new PartCar()
+                        {
+                            Car = car,
+                            PartId = part
+                        };
+                        partsCarToImport.Add(newPartCar);
+                    }
+                }
+
+                car.PartCars = partsCarToImport;
+
+                cars.Add(car);
+
+            }
+
+            context.AddRange(cars);
+            context.SaveChanges();
+
+
+            return $"Successfully imported {cars.Count}";
+        }
+
+        public static string ImportCustomers(CarDealerContext context, string inputXml)
+        {
+            XmlRootAttribute xmlRootAttribute = new XmlRootAttribute("Customers");
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ImportCustomersDto[]),xmlRootAttribute);
+
+            StringReader reader = new StringReader(inputXml);
+            ImportCustomersDto[] customersDto = (ImportCustomersDto[])xmlSerializer.Deserialize(reader);
+
+            Customer[] customersToAdd = customersDto
+                .Select(customer=>new Customer()
+                {
+                    Name = customer.Name,
+                    BirthDate = customer.BirthDate,
+                    IsYoungDriver = customer.IsYoungDriver
+                })
+                .ToArray();
+
+            context.Customers.AddRange(customersToAdd);
+            context.SaveChanges();
+
+
+            return $"Successfully imported {customersToAdd.Length}";
+        }
+
+        public static string ImportSales(CarDealerContext context, string inputXml)
+        {
+            XmlRootAttribute Root = new XmlRootAttribute("Sales");
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ImportSalesDto[]), Root);
+
+            StringReader reader = new StringReader(inputXml);
+            ImportSalesDto[] importSalesDtos = (ImportSalesDto[])xmlSerializer.Deserialize(reader);
+
+            ICollection<Sale> salesToAdd = new List<Sale>();
+
+            foreach (var sDto in importSalesDtos)
+            {
+                if (context.Cars.Any(id=>id.Id == sDto.CarId))
+                {
+                    Sale s = new Sale()
+                    {
+                        CarId=sDto.CarId,
+                        CustomerId = sDto.CustomerId,
+                        Discount = sDto.Discount
+                    };
+
+                    salesToAdd.Add(s);
+
+                }
+            }
+
+            context.AddRange(salesToAdd);
+            context.SaveChanges();
+
+            return $"Successfully imported {salesToAdd.Count}";
         }
     }
 }
