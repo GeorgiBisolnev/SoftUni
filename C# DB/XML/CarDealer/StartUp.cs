@@ -47,7 +47,9 @@ namespace CarDealer
                 //System.Console.WriteLine(GetCarsWithDistance(context));
                 //System.Console.WriteLine(GetCarsFromMakeBmw(context));
                 //Console.WriteLine(GetLocalSuppliers(context));
-                Console.WriteLine(GetCarsWithTheirListOfParts(context));
+                //Console.WriteLine(GetCarsWithTheirListOfParts(context));
+                //Console.WriteLine(GetTotalSalesByCustomer(context));
+                Console.WriteLine(GetSalesWithAppliedDiscount(context));
             }
 
         }
@@ -329,6 +331,68 @@ namespace CarDealer
             xmlSerializer.Serialize(sw, cParts, namespaces);
 
             return sw.ToString().TrimEnd();
+        }
+
+        public static string GetTotalSalesByCustomer(CarDealerContext context)
+        {
+            var totalSales = context.Customers
+                .Where(c => c.Sales.Any())
+                .Select(x => new ExportTotalSalesCustomerDto
+                {
+                    FullName = x.Name,
+                    BoughtCars = x.Sales.Count,
+                    SpentMoney = x.Sales
+                                    .SelectMany(x => x.Car.PartCars)
+                                                        .Sum(x => x.Part.Price)
+                })
+                .OrderByDescending(x => x.SpentMoney)
+                .ThenByDescending(x => x.BoughtCars)
+                .ToArray();
+
+            var result = Serializer(totalSales, "cars");
+
+            return result;
+        }
+
+
+        public static string GetSalesWithAppliedDiscount(CarDealerContext context)
+        {
+            var salesWDiscount = context
+                .Sales
+                .Select(s=> new ExportSalesWithDiscountDto
+                {
+                    Car = new ExportSalesWithDiscountCarDto
+                    {
+                        Make = s.Car.Make,
+                        Model = s.Car.Model,
+                        TravelledDistance = s.Car.TravelledDistance
+                    },
+                    Discount = s.Discount,
+                    CustomerName = s.Customer.Name,
+                    Price =(double) s.Car.PartCars.Sum(p=>p.Part.Price),
+                    PriceWithDiscount  =(double)( s.Car.PartCars.Sum(p => p.Part.Price) 
+                                - (s.Car.PartCars.Sum(p => p.Part.Price)* s.Discount/100))
+                })
+                .ToArray();
+
+            var result = Serializer(salesWDiscount, "sales");
+
+            return result;
+        }
+        private static string Serializer<T>(T dto, string rootName)
+        {
+            var sb = new StringBuilder();
+
+            var xmlRoot = new XmlRootAttribute(rootName);
+            var namespaces = new XmlSerializerNamespaces();
+            namespaces.Add("", "");
+
+            var serializer = new XmlSerializer(typeof(T), xmlRoot);
+
+            using var writer = new StringWriter(sb);
+            serializer.Serialize(writer, dto, namespaces);
+
+            return sb.ToString().TrimEnd();
         }
     }
 }
