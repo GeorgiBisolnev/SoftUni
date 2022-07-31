@@ -1,10 +1,13 @@
 ﻿using CarDealer.Data;
+using CarDealer.DTO.Export;
 using CarDealer.DTO.Import;
 using CarDealer.Models;
-using System.Collections;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Xml.Serialization;
 
 namespace CarDealer
@@ -15,30 +18,37 @@ namespace CarDealer
         {
 
             var context = new CarDealerContext();
+            //Imports
+            {
+                //context.Database.EnsureDeleted();
+                //context.Database.EnsureCreated();
 
-            //context.Database.EnsureDeleted();
-            //context.Database.EnsureCreated();
+                //System.Console.WriteLine("Done!");
 
-            //System.Console.WriteLine("Done!");
+                //string xmlFile = File.ReadAllText("../../../Datasets/suppliers.xml");
 
-            //string xmlFile = File.ReadAllText("../../../Datasets/suppliers.xml");
+                //System.Console.WriteLine(ImportSuppliers(context, xmlFile));
 
-            //System.Console.WriteLine(ImportSuppliers(context, xmlFile));
+                //string xmlFile2 = File.ReadAllText("../../../Datasets/parts.xml");
+                //System.Console.WriteLine(ImportParts(context, xmlFile2));
 
-            //string xmlFile2 = File.ReadAllText("../../../Datasets/parts.xml");
-            //System.Console.WriteLine(ImportParts(context, xmlFile2));
+                //string xmlFile3 = File.ReadAllText("../../../Datasets/cars.xml");
+                //System.Console.WriteLine(ImportCars(context, xmlFile3));
 
-            //string xmlFile3 = File.ReadAllText("../../../Datasets/cars.xml");
-            //System.Console.WriteLine(ImportCars(context, xmlFile3));
+                //string xmlFile4 = File.ReadAllText("../../../Datasets/customers.xml");
+                //System.Console.WriteLine(ImportCustomers(context, xmlFile4));
 
-            //string xmlFile4 = File.ReadAllText("../../../Datasets/customers.xml");
-            //System.Console.WriteLine(ImportCustomers(context, xmlFile4));
+                //string xmlFile5 = File.ReadAllText("../../../Datasets/sales.xml");
+                //System.Console.WriteLine(ImportSales(context, xmlFile5));
+            }
 
-            string xmlFile5 = File.ReadAllText("../../../Datasets/sales.xml");
-            System.Console.WriteLine(ImportSales(context, xmlFile5));
-
-
-
+            //Exports
+            {
+                //System.Console.WriteLine(GetCarsWithDistance(context));
+                //System.Console.WriteLine(GetCarsFromMakeBmw(context));
+                //Console.WriteLine(GetLocalSuppliers(context));
+                Console.WriteLine(GetCarsWithTheirListOfParts(context));
+            }
 
         }
         public static string ImportSuppliers(CarDealerContext context, string inputXml)
@@ -198,6 +208,127 @@ namespace CarDealer
             context.SaveChanges();
 
             return $"Successfully imported {salesToAdd.Count}";
+        }
+
+        public static string GetCarsWithDistance(CarDealerContext context)
+        {
+            ExportCarsWithDistanceDto[] carDtos = context
+                .Cars
+                .Where(c => c.TravelledDistance > 2000000)
+                .Select(c => new ExportCarsWithDistanceDto()
+                {
+                    Make = c.Make,
+                    Model = c.Model,
+                    TravelledDistance = c.TravelledDistance,
+                })
+                .OrderBy(c => c.Make)
+                .ThenBy(c => c.Model)
+                .Take(10)
+                .ToArray();
+
+            XmlRootAttribute rootAttribute = new XmlRootAttribute("cars");
+            XmlSerializerNamespaces namespacexml = new XmlSerializerNamespaces();
+            namespacexml.Add(string.Empty, string.Empty);
+
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ExportCarsWithDistanceDto[]),rootAttribute);
+
+            StringBuilder sb = new StringBuilder();
+            using StringWriter sw = new StringWriter(sb);
+
+            xmlSerializer.Serialize(sw, carDtos,namespacexml);
+
+            return sb.ToString().TrimEnd();
+        }
+
+        public static string GetCarsFromMakeBmw(CarDealerContext context)
+        {
+            ExportCarsFromMakeBmwDto[] exportBMW = context
+                .Cars
+                .Where(c=>c.Make=="BMW")
+                .OrderBy(m=>m.Model)
+                .ThenByDescending(c=>c.TravelledDistance)
+                .Select(c => new ExportCarsFromMakeBmwDto()
+                {
+                    Id = c.Id,
+                    Model = c.Model,
+                    TravelledDistance= c.TravelledDistance
+                })
+                .ToArray();
+
+            XmlRootAttribute xmlRootAttribute = new XmlRootAttribute("cars");
+
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ExportCarsFromMakeBmwDto[]),xmlRootAttribute);
+
+            StringBuilder stringBuilder = new StringBuilder();
+            using StringWriter sw = new StringWriter(stringBuilder);
+            XmlSerializerNamespaces namespaces = new XmlSerializerNamespaces();
+            namespaces.Add("", "");
+            xmlSerializer.Serialize(sw, exportBMW, namespaces);
+
+            return sw.ToString().TrimEnd();
+        }
+
+        public static string GetLocalSuppliers(CarDealerContext context)
+        {
+            ExportLocalSuppliersDto[] suppliers = context
+                .Suppliers
+                .Where(s => s.IsImporter == false)
+                .Select(s => new ExportLocalSuppliersDto()
+                {
+                    Name = s.Name,
+                    Id = s.Id,
+                    PartsCount = (string)s.Parts.Count().ToString()
+                })
+                .ToArray();
+
+
+            XmlRootAttribute xmlRootAttribute = new XmlRootAttribute("suppliers");
+
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ExportLocalSuppliersDto[]), xmlRootAttribute);
+
+            StringBuilder stringBuilder = new StringBuilder();
+            using StringWriter sw = new StringWriter(stringBuilder);
+            XmlSerializerNamespaces namespaces = new XmlSerializerNamespaces();
+            namespaces.Add("", "");
+            xmlSerializer.Serialize(sw, suppliers, namespaces);
+
+            return sw.ToString().TrimEnd();
+        }
+
+        public static string GetCarsWithTheirListOfParts(CarDealerContext context)
+        {
+            ExportCarsWithTheirPartsDto[] cParts = context
+                .Cars
+                .Select(c=> new ExportCarsWithTheirPartsDto()
+                {
+                    Make = c.Make,
+                    Model = c.Model,
+                    TravelledDistance = c.TravelledDistance,
+                    Parts = c.PartCars
+                    .Select(cp=> new ExportCarPartsDto()
+                    {
+                        Name = cp.Part.Name,
+                        Price = cp.Part.Price
+                    })
+                    .OrderByDescending(cp=>cp.Price)
+                    .ToArray(),
+                })
+                .OrderByDescending(c=>c.TravelledDistance)
+                .ThenBy(c=>c.Model)
+                .Take(5)
+                .ToArray();
+
+            XmlRootAttribute xmlRootAttribute = new XmlRootAttribute("cars");
+
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ExportCarsWithTheirPartsDto[]), xmlRootAttribute);
+
+            StringBuilder stringBuilder = new StringBuilder();
+            using StringWriter sw = new StringWriter(stringBuilder);
+            XmlSerializerNamespaces namespaces = new XmlSerializerNamespaces();
+            namespaces.Add("", "");
+            xmlSerializer.Serialize(sw, cParts, namespaces);
+
+            return sw.ToString().TrimEnd();
         }
     }
 }
