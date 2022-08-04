@@ -12,6 +12,7 @@ namespace SoftJail.Data.Models
         {
             this.Prisoners = new HashSet<Prisoner>();
         }
+
         [Key]
         public int Id { get; set; }
 

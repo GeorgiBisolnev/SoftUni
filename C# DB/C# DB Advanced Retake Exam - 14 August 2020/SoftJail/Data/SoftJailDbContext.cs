@@ -28,5 +28,12 @@
 			builder.Entity<OfficerPrisoner>()
                 .HasKey(op => new {op.PrisonerId, op.OfficerId}); 
 		}
-	}
+
+        public DbSet<Cell> Cells { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Mail> Mails { get; set; }
+        public DbSet<Prisoner> Prisoners { get; set; }
+        public DbSet<Officer> Officers { get; set; }
+        public DbSet<OfficerPrisoner> OfficersPrisoners { get; set; }
+    }
 }

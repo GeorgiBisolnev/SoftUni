@@ -12,6 +12,7 @@ namespace SoftJail.Data.Models
             this.Mails = new List<Mail>();
             this.PrisonerOfficers = new List<OfficerPrisoner>();
         }
+
         [Key]   
         public int Id { get; set; }
 

@@ -267,16 +267,5 @@ namespace ProductShop
 
             return sb.ToString().TrimEnd();
         }
-        private static string Serializer<T>(T dto)
-        {
-            StringBuilder sb = new StringBuilder();
-            //var xmlRoot = new XmlRootAttribute(rootName);
-            var nspaces = new XmlSerializerNamespaces();
-            nspaces.Add("", string.Empty);
-            var serializer = new XmlSerializer(typeof(T));
-            using var writer = new StringWriter(sb);
-            serializer.Serialize(writer, dto, nspaces);
-            return sb.ToString().TrimEnd();
-        }
     }
 }
