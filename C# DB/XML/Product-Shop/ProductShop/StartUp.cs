@@ -29,7 +29,7 @@ namespace ProductShop
             //string inputXML4 = File.ReadAllText("../../../Datasets/categories-products.xml");
             //System.Console.WriteLine(ImportCategoryProducts(dbcontext, inputXML4));
 
-            System.Console.WriteLine(GetSoldProducts(dbcontext));
+            System.Console.WriteLine(GetUsersWithProducts(dbcontext));
         }
 
         public static string ImportUsers(ProductShopContext context, string inputXml)
@@ -194,6 +194,64 @@ namespace ProductShop
 
             return Serializer(usersSold, "Users");
         }
+
+        public static string GetCategoriesByProductsCount(ProductShopContext context)
+        {
+            var categories = context
+                .Categories
+                .Select(c => new ExportCategoryesDto()
+                {
+                    Name = c.Name,
+                    Count = c.CategoryProducts.Count(),                    
+                    TotalRevenue = c.CategoryProducts.Sum(p => p.Product.Price),
+                    AveragePrice = c.CategoryProducts.Sum(p => p.Product.Price) / c.CategoryProducts.Count()
+                })
+                .OrderByDescending(n => n.Count)                
+                .ThenBy(t => t.TotalRevenue)
+                .ToArray();
+
+            return Serializer(categories, "Categories");
+        }
+
+        public static string GetUsersWithProducts(ProductShopContext context)
+        {
+            var users = context
+                .Users
+                    .Where(u => u.ProductsSold.Count() > 0)
+                    .Select(u => new UsersExportDto()
+                    {
+                        FirstName = u.FirstName,
+                        LastName = u.LastName,
+                        Age = u.Age,
+                        SoldProductsDto = new SoldProductsDto()
+                        {
+                            Count = u.ProductsSold.Count(),
+                            ProducstDto = u.ProductsSold.Select(p => new ProducstDto()
+                            {
+                                Name = p.Name,
+                                Price = p.Price,
+                            })
+                            .OrderByDescending(p=>p.Price)
+                            .ToArray()
+                        }
+                    })
+                    .OrderByDescending(p=>p.SoldProductsDto.Count)
+                    .ToArray()
+                    .Take(10)
+                    .ToList();
+
+            var result = new UsersProductsExportDto
+            {
+                Count = context.Users.Count(u => u.ProductsSold.Count > 0),
+                UsersArray = users
+            };
+
+
+            //string path = @"../../../Dtos/Result/LastXML.xml";
+            //File.WriteAllText(path, Serializer(result, "Users"));
+            //return "Изготвих файла, ходи да провериш!";
+            return Serializer(result, "Users");
+        }
         private static string Serializer<T>(T dto, string rootName)
         {
             var sb = new StringBuilder();
@@ -207,6 +265,17 @@ namespace ProductShop
             using var writer = new StringWriter(sb);
             serializer.Serialize(writer, dto, namespaces);
 
+            return sb.ToString().TrimEnd();
+        }
+        private static string Serializer<T>(T dto)
+        {
+            StringBuilder sb = new StringBuilder();
+            //var xmlRoot = new XmlRootAttribute(rootName);
+            var nspaces = new XmlSerializerNamespaces();
+            nspaces.Add("", string.Empty);
+            var serializer = new XmlSerializer(typeof(T));
+            using var writer = new StringWriter(sb);
+            serializer.Serialize(writer, dto, nspaces);
             return sb.ToString().TrimEnd();
         }
     }
