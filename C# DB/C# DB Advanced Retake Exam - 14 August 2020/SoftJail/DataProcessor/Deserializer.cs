@@ -5,12 +5,15 @@
     using Newtonsoft.Json;
     using SoftJail.Data.Models;
     using SoftJail.DataProcessor.ImportDto;
+    using SoftJail.Data.Models.Enums;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Globalization;
+    using System.IO;
     using System.Linq;
     using System.Text;
+    using System.Xml.Serialization;
 
     public class Deserializer
     {
@@ -93,7 +96,7 @@
                 }
 
                 bool incarcerationDateValid = 
-                    DateTime.TryParse(prisoner.IncarcerationDate, CultureInfo.InvariantCulture,
+                    DateTime.TryParseExact(prisoner.IncarcerationDate,"dd/MM/yyyy", CultureInfo.InvariantCulture,
                         DateTimeStyles.None, out DateTime incarcerationDate);
 
                 if (!incarcerationDateValid)
@@ -101,12 +104,12 @@
                     sb.AppendLine("Invalid Data");
                     continue;
                 }
-
+                DateTime relDate=DateTime.Now;
                 if (prisoner.ReleaseDate!=null)
                 {                
                     bool ReleaseDateValid =
-                        DateTime.TryParse(prisoner.ReleaseDate, CultureInfo.InvariantCulture,
-                            DateTimeStyles.None, out DateTime relDate);
+                        DateTime.TryParseExact(prisoner.ReleaseDate, "dd/MM/yyyy", CultureInfo.InvariantCulture,
+                            DateTimeStyles.None, out  relDate);
                     if (!ReleaseDateValid)
                     {
                         sb.AppendLine("Invalid Data");
@@ -114,20 +117,19 @@
                     }
                 }
                 DateTime? releaseDate;
-                if (prisoner.ReleaseDate == null)
+                if (String.IsNullOrEmpty(prisoner.ReleaseDate))
                 {
                     releaseDate = null;
                 }
                 else 
-                    releaseDate = DateTime.Parse(prisoner.ReleaseDate, CultureInfo.InvariantCulture);
+                    releaseDate = relDate;
 
                 Prisoner newPrisoner = new Prisoner()
                 {
                     FullName = prisoner.FullName,
                     Nickname=prisoner.NickName,
                     Age=prisoner.Age,
-                    IncarcerationDate = 
-                        DateTime.Parse(prisoner.IncarcerationDate, CultureInfo.InvariantCulture),
+                    IncarcerationDate = incarcerationDate,
                     ReleaseDate= releaseDate,
                     Bail = prisoner.Bail,
                     CellId = prisoner.CellId,               
@@ -157,7 +159,49 @@
 
         public static string ImportOfficersPrisoners(SoftJailDbContext context, string xmlString)
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+            XmlRootAttribute xmlRoot = new XmlRootAttribute("Officers");
+            XmlSerializer xmlSerializer = 
+                new XmlSerializer(typeof(ImportOficersWithPrisonersDto[]), xmlRoot);
+
+            using StringReader reader = new StringReader(xmlString);
+
+            ImportOficersWithPrisonersDto[] OfficersDto = 
+                    (ImportOficersWithPrisonersDto[])xmlSerializer.Deserialize(reader);
+
+            foreach (var ofDto in OfficersDto)
+            {
+                if (!IsValid(ofDto))
+                {
+                    sb.AppendLine("Invalid Data");
+                    continue;
+                }
+
+                bool validEnumPosition =
+                Enum.TryParse(typeof(Position), ofDto.Position, out object posObj);
+                bool validEnumWeapon =
+                Enum.TryParse(typeof(Position), ofDto.Weapon, out object weapObj);
+
+                if (!validEnumPosition)
+                {
+                    sb.AppendLine("Invalid Data");
+                    continue;
+                }
+
+                if (!validEnumWeapon)
+                {
+                    sb.AppendLine("Invalid Data");
+                    continue;
+                }
+
+                if (!context.Departments.Any(id=>id.Id == ofDto.DepartmentId))
+                {
+                    sb.AppendLine("Invalid Data");
+                    continue;
+                }
+            }
+
+            
         }
 
         private static bool IsValid(object obj)

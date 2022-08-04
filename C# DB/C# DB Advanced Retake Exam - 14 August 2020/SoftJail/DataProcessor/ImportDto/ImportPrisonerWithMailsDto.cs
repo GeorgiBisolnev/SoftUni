@@ -24,10 +24,10 @@ namespace SoftJail.DataProcessor.ImportDto
         public int Age { get; set; }
 
         [JsonProperty("IncarcerationDate")]
+        [Required]
         public string IncarcerationDate { get; set; }
 
         [JsonProperty("ReleaseDate")]
-        [Required]
         public string ReleaseDate { get; set; }
 
         [JsonProperty("Bail")]
