@@ -169,6 +169,8 @@
             ImportOficersWithPrisonersDto[] OfficersDto = 
                     (ImportOficersWithPrisonersDto[])xmlSerializer.Deserialize(reader);
 
+            List<Officer> validOficers = new List<Officer>();
+
             foreach (var ofDto in OfficersDto)
             {
                 if (!IsValid(ofDto))
@@ -178,9 +180,9 @@
                 }
 
                 bool validEnumPosition =
-                Enum.TryParse(typeof(Position), ofDto.Position, out object posObj);
+                    Enum.TryParse(typeof(Position), ofDto.Position, out object posObj);
                 bool validEnumWeapon =
-                Enum.TryParse(typeof(Position), ofDto.Weapon, out object weapObj);
+                    Enum.TryParse(typeof(Weapon), ofDto.Weapon, out object weapObj);
 
                 if (!validEnumPosition)
                 {
@@ -194,14 +196,40 @@
                     continue;
                 }
 
-                if (!context.Departments.Any(id=>id.Id == ofDto.DepartmentId))
+                //if (!context.Departments.Any(id=>id.Id == ofDto.DepartmentId))
+                //{
+                //    sb.AppendLine("Invalid Data");
+                //    continue;
+                //}
+
+                Officer newOfficer = new Officer()
                 {
-                    sb.AppendLine("Invalid Data");
-                    continue;
+                    FullName    =   ofDto.Name,
+                    Salary = ofDto.Money,
+                    Position = (Position)posObj,
+                    Weapon = (Weapon)weapObj,
+                    DepartmentId = ofDto.DepartmentId,
+                };
+
+                foreach (var prisoner in ofDto.Prisoners)
+                {
+                    OfficerPrisoner op = new OfficerPrisoner()
+                    {
+                        Officer = newOfficer,
+                        PrisonerId = prisoner.Id,
+                    };
+
+                    newOfficer.OfficerPrisoners.Add(op);
                 }
+
+                validOficers.Add(newOfficer);
+                sb.AppendLine($"Imported {ofDto.Name} ({ofDto.Prisoners.Count()} prisoners)");
             }
 
-            
+            context.AddRange(validOficers);
+            context.SaveChanges();
+
+            return sb.ToString().Trim();
         }
 
         private static bool IsValid(object obj)
