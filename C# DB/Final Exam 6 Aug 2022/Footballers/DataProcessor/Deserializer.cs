@@ -91,7 +91,6 @@
                         Name = footballer.Name,
                         ContractStartDate = convertedStartDate,
                         ContractEndDate = convertedEndDate,
-                        //YourEnum foo = (YourEnum)yourInt;
                         BestSkillType = (BestSkillType)footballer.BestSkillType,
                         PositionType = (PositionType)footballer.PositionType
 
@@ -131,25 +130,22 @@
                     continue;
                 }
 
-                bool validTrophies = int.TryParse(team.Trophies, out var trophiesNumber);
-
-                if (!validTrophies || trophiesNumber<=0)
+                if(team.Trophies<=0)
                 {
                     sb.AppendLine(ErrorMessage);
                     continue;
                 }
 
-                //List<Footballer> FootbalersToAdd = new List<Footballer>();
                 var uniqueFootbalersArray = team.Footballers.Select(x => x).Distinct();
 
                 Team newTeam = new Team()
                 {
                     Name = team.Name,
                     Nationality = team.Nationality,
-                    Trophies = trophiesNumber
+
+                    Trophies = team.Trophies,
                 };
 
-                int importedFootbollers = 0;
                 foreach (var uF in uniqueFootbalersArray)
                 {
                     if (!context.Footballers.Select(id=>id.Id).Contains(uF))
@@ -164,12 +160,11 @@
                         FootballerId = uF
                     };
 
-                    newTeam.TeamsFootballers.Add(tf);
-                    importedFootbollers++;
+                    newTeam.TeamsFootballers.Add(tf);                    
                 }
 
                 validTeams.Add(newTeam);
-                sb.AppendLine($"Successfully imported team - {newTeam.Name} with {importedFootbollers} footballers.");
+                sb.AppendLine($"Successfully imported team - {newTeam.Name} with {newTeam.TeamsFootballers.Count} footballers.");
              }
 
             context.AddRange(validTeams);

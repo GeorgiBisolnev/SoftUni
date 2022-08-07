@@ -22,7 +22,7 @@ namespace Footballers.DataProcessor.ImportDto
         public string Nationality { get; set; }
 
         [Required]
-        public string Trophies { get; set; }
+        public int Trophies { get; set; }
 
         public int[] Footballers { get; set; }
     }
