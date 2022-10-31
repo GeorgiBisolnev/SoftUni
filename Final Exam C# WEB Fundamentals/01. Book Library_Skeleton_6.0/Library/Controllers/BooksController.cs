@@ -1,6 +1,7 @@
 ﻿using Library.Data;
 using Library.Data.Models;
 using Library.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
@@ -18,6 +19,7 @@ namespace Library.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> All()
         {
             var model = await context.Books
@@ -38,6 +40,7 @@ namespace Library.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Add()
         {
             var allCategories = await context.Categories.ToListAsync();
@@ -51,6 +54,7 @@ namespace Library.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Add(AddNewBookViewModel model)
         {
             if (!ModelState.IsValid)
@@ -75,6 +79,7 @@ namespace Library.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Mine()
         {
             var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
@@ -103,6 +108,7 @@ namespace Library.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddToCollection(int bookId)
         {
 
@@ -132,6 +138,7 @@ namespace Library.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> RemoveFromCollection(int bookId)
         {
 
